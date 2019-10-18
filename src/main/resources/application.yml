@@ -1,0 +1,39 @@
+#spring boot的配置文件,（.yml）
+#.yml的使用区别：":"+" "
+#删除.properties文件，使用.yml文件简单配置，然后使用@Value获取配置属性(例：HelloController)
+server:
+  port: 8080  #tomcat的默认端口(例：8080)
+  servlet:
+    context-path: /first  #tomcat的默认路径（例：/first）
+
+
+spring:
+  #对jsp文件重定向到/WEB-INF/views/目录下
+  mvc:
+    view:
+      prefix: webapp/WEB-NIF/views/
+      suffix: .jsp
+  #数据库连接信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root123
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml  #配置mapper.xml文件的引用路径
+  type-aliases-package: cm.test_sb.demo #pojo别名扫描包,扫描pojo包，给包下所有pojo对象起别名
+#mybatis-plus-boot-starte 依赖中，mapper.xml的文件引用路径配置为：mybatis.mapper-locations=classpath:mapper/*.xml
+#注：1.若引用mybatis-plus-boot-starter 依赖，需要配置 mybatis-plus.mapper-locations
+#    2.引用mybatis-plus 依赖，需要配置 mybatis.mapper-locations
+
+#注：classpath*：表明classpath以及其他路径； classpth:表明仅仅在classpath路径下
+
+#act_text: 爬山看日出
+#act_time: 6:30
+text: 在破晓时刻，天空开始泛起千层之波澜
+
+student:
+  act_text: 爬山看日出：${text}
+  act_time: 6点半
