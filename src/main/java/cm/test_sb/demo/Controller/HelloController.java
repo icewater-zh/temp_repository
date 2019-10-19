@@ -26,6 +26,7 @@ public class HelloController {
     @RequestMapping("/hello")//测试：localhost:8080/first/hello
     public String hello(Model m){
         m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
+        for(int i=0;i<4;i++)
         System.out.println("hello!!");
         /*return "hello spring boot!"+"\n"+"在"+act_time+","+act_text;*/
         return "hello spring boot!"+"\n"+"在"+sp.getAct_time()+","+sp.getAct_text();
